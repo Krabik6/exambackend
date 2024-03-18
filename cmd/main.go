@@ -5,13 +5,14 @@ import (
 	"exambackend/internal/handler"
 	"exambackend/internal/repository/postgres"
 	"exambackend/internal/service"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 )
 
 func main() {
 	cfg := config.New()
-
+	fmt.Println(cfg)
 	// Инициализация подключения к БД
 	db, err := postgres.NewDB(cfg.DBConfig.Host, cfg.DBConfig.Port, cfg.DBConfig.User, cfg.DBConfig.Password, cfg.DBConfig.DBName)
 	if err != nil {
