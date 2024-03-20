@@ -4,7 +4,7 @@ package model
 type User struct {
 	ID       int64  `json:"id"`
 	Login    string `json:"login"`
-	Password string `json:"-"` // Не включаем пароль в JSON
+	Password string `json:"password"`
 	FullName string `json:"fullName"`
 	Phone    string `json:"phone"`
 	Email    string `json:"email"`

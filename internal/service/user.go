@@ -4,6 +4,7 @@ import (
 	"exambackend/internal/model"
 	"exambackend/internal/repository"
 	"fmt"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // UserService предоставляет методы для работы с пользователями
@@ -23,6 +24,13 @@ func NewUserService(userRepo repository.UserRepository) UserService {
 
 // Register регистрирует нового пользователя
 func (s *userService) Register(user model.User) (int64, error) {
+	// Хеширование пароля пользователя перед сохранением
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if err != nil {
+		return 0, fmt.Errorf("не удалось хешировать пароль: %w", err)
+	}
+	user.Password = string(hashedPassword) // Заменяем исходный пароль на его хеш
+
 	// Здесь могут быть дополнительные проверки и логика перед добавлением пользователя
 	return s.userRepo.Create(user)
 }

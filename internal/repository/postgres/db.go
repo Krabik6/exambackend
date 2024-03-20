@@ -8,8 +8,7 @@ import (
 )
 
 func NewDB(host, port, user, password, dbname string) (*sql.DB, error) {
-	dbURL := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", user, password, host, port, dbname)
-	//dbURL := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	dbURL := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 	log.Println("dbURL: ", dbURL)
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {

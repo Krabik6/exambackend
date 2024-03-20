@@ -1,0 +1,22 @@
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzEwOTM0MzcwfQ.YT6BxJV6ehnnwmE-RYLHwofsCzSiNTm-YxlhVl9hI64
+
+POST http://localhost:8080/violations
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "carNumber": "О123О333333О77",
+  "description": "Злая собака в машине"
+}
+
+###
+
+# curl -X GET http://localhost:8080/violations
+#-H "Authorization: Bearer ${TOKEN}"
+GET http://localhost:8080/violations
+Authorization: Bearer {{TOKEN}}
+
+###
+
+
+

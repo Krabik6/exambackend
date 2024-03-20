@@ -1,0 +1,27 @@
+@TOKEN =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxMDkzNjMxMX0.idelULPAdNXEgR1ISMxvAMSEXDrR6E6UUX8VfrMY1_s
+
+###
+
+# curl -X GET http://localhost:8080/admin/violations
+#-H "Authorization: Bearer ${TOKEN}"
+GET http://localhost:8080/admin/violations
+Authorization: Bearer {{TOKEN}}
+
+###
+# curl -X PATCH http://localhost:8080/admin/violations/4
+#-H "Authorization: Bearer {{TOKEN}}"
+#-H 'Content-Type: application/json'
+#-d '{
+#    "status": "рассмотрено"
+#}'
+PATCH http://localhost:8080/admin/violations/4
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "status": "рассмотрено"
+}
+
+###
+
+

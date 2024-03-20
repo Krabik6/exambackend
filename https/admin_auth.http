@@ -1,0 +1,17 @@
+###
+
+# curl -X POST http://localhost:8080/login
+#-H 'Content-Type: application/json'
+#-d '{
+#    "login": "new_user",
+#    "password": "password123"
+#}'
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "login": "copp",
+  "password": "password"
+}
+
+###

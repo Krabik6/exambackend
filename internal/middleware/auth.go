@@ -3,19 +3,23 @@ package middleware
 import (
 	"exambackend/pkg/jwtn"
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token := c.GetHeader("Authorization")
-		if token == "" {
+		authHeader := c.GetHeader("Authorization")
+		if authHeader == "" {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Необходима авторизация"})
 			return
 		}
 
-		userID, role, err := jwtn.VerifyToken(token) // Обновленный вызов VerifyToken
+		// Извлечение токена, удаляя префикс "Bearer "
+		token := strings.TrimPrefix(authHeader, "Bearer ")
+
+		userID, role, err := jwtn.VerifyToken(token) // Передаем в функцию уже без "Bearer "
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Неверный токен"})
 			return

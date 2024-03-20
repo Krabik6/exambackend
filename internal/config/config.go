@@ -8,11 +8,11 @@ import (
 )
 
 type DBConfig struct {
-	User     string `envconfig:"POSTGRES_USER" required:"true"`
-	Password string `envconfig:"POSTGRES_PASSWORD" required:"true"`
-	Host     string `envconfig:"POSTGRES_HOST" required:"true"`
-	Port     string `envconfig:"POSTGRES_PORT" required:"true"`
-	DBName   string `envconfig:"POSTGRES_DB" required:"true"`
+	User     string `envconfig:"DB_USER" required:"true"`
+	Password string `envconfig:"DB_PASSWORD" required:"true"`
+	Host     string `envconfig:"DB_HOST_EXTERNAL" required:"true"`
+	Port     string `envconfig:"DB_PORT_EXTERNAL" required:"true"`
+	DBName   string `envconfig:"DB_NAME" required:"true"`
 }
 
 type Config struct {

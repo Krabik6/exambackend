@@ -38,9 +38,9 @@ func (r *violationRepo) GetAllViolations() ([]model.Violation, error) {
 
 // Create добавляет новое заявление о нарушении в базу данных
 func (repo *violationRepo) Create(violation model.Violation) (int64, error) {
-	query := `INSERT INTO violations (user_id, car_number, description, status, created_at) VALUES ($1, $2, $3, $4, $5) RETURNING id`
+	query := `INSERT INTO violations (user_id, car_number, description) VALUES ($1, $2, $3) RETURNING id`
 	var violationID int64
-	err := repo.db.QueryRow(query, violation.UserID, violation.CarNumber, violation.Description, violation.Status, violation.CreatedAt).Scan(&violationID)
+	err := repo.db.QueryRow(query, violation.UserID, violation.CarNumber, violation.Description).Scan(&violationID)
 	if err != nil {
 		return 0, fmt.Errorf("ошибка при добавлении заявления о нарушении: %w", err)
 	}
