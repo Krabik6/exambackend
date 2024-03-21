@@ -10,4 +10,5 @@ type Violation struct {
 	Description string    `json:"description"`
 	Status      string    `json:"status"`
 	CreatedAt   time.Time `json:"createdAt"`
+	FullName    string    `json:"fullName"` // Добавлено новое поле
 }

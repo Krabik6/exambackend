@@ -30,7 +30,7 @@ func (s *userService) Register(user model.User) (int64, error) {
 		return 0, fmt.Errorf("не удалось хешировать пароль: %w", err)
 	}
 	user.Password = string(hashedPassword) // Заменяем исходный пароль на его хеш
-
+	fmt.Println("user.Password:", user.Password)
 	// Здесь могут быть дополнительные проверки и логика перед добавлением пользователя
 	return s.userRepo.Create(user)
 }

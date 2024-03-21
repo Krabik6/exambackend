@@ -18,7 +18,10 @@ func NewViolationRepo(db *sql.DB) *violationRepo {
 
 func (r *violationRepo) GetAllViolations() ([]model.Violation, error) {
 	var violations []model.Violation
-	query := `SELECT id, user_id, car_number, description, status, created_at FROM violations`
+	// Обновленный запрос с JOIN к таблице users для получения ФИО пользователя
+	query := `SELECT v.id, v.user_id, v.car_number, v.description, v.status, v.created_at, u.full_name 
+	          FROM violations v 
+	          JOIN users u ON v.user_id = u.id`
 	rows, err := r.db.Query(query)
 	if err != nil {
 		return nil, fmt.Errorf("error querying all violations: %w", err)
@@ -27,7 +30,8 @@ func (r *violationRepo) GetAllViolations() ([]model.Violation, error) {
 
 	for rows.Next() {
 		var v model.Violation
-		if err := rows.Scan(&v.ID, &v.UserID, &v.CarNumber, &v.Description, &v.Status, &v.CreatedAt); err != nil {
+		// Обратите внимание на добавление u.full_name в Scan
+		if err := rows.Scan(&v.ID, &v.UserID, &v.CarNumber, &v.Description, &v.Status, &v.CreatedAt, &v.FullName); err != nil {
 			return nil, fmt.Errorf("error scanning violation: %w", err)
 		}
 		violations = append(violations, v)

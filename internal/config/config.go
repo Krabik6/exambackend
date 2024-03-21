@@ -10,8 +10,8 @@ import (
 type DBConfig struct {
 	User     string `envconfig:"DB_USER" required:"true"`
 	Password string `envconfig:"DB_PASSWORD" required:"true"`
-	Host     string `envconfig:"DB_HOST_EXTERNAL" required:"true"`
-	Port     string `envconfig:"DB_PORT_EXTERNAL" required:"true"`
+	Host     string `envconfig:"DB_HOST" required:"true"`
+	Port     string `envconfig:"DB_PORT_INTERNAL" required:"true"`
 	DBName   string `envconfig:"DB_NAME" required:"true"`
 }
 

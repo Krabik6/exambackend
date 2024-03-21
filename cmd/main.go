@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	cfg := config.New()
 	fmt.Println(cfg)
 	// Инициализация подключения к БД
@@ -30,6 +31,8 @@ func main() {
 	// Создание хендлера и регистрация маршрутов
 	h := handler.NewHandler(userService, violationService)
 	router := gin.Default()
+	router.Use(handler.CORSMiddleware())
+
 	h.RegisterRoutes(router)
 
 	// Запуск сервера

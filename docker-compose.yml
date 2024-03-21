@@ -1,17 +1,17 @@
 version: '3.8'
 
 services:
-#  damn:
-#    build:
-#      context: ./
-#    command: ["./damn"]
-#    ports:
-#      - "8080:8080"
-#    env_file:
-#      - .env
-#    depends_on:
-#      - db
-#    container_name: damn
+  damn:
+    build:
+      context: ./
+    command: ["./damn"]
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    container_name: damn
 
   db:
     image: postgres:latest

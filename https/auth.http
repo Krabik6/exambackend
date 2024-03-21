@@ -53,11 +53,11 @@ POST http://localhost:8080/register
 Content-Type: application/json
 
 {
-  "login": "new_user2",
-  "password": "password123",
-  "fullName": "New User 2",
+  "login": "111111211111",
+  "password": "111111",
+  "fullName": "N111111",
   "phone": "+2234567890",
-  "email": "newuser2@example.com"
+  "email": "11111112111@example.com"
 }
 
 ###
@@ -72,8 +72,8 @@ POST http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "login": "new_user2",
-  "password": "password123"
+  "login": "new_use2r2",
+  "password": "passwo2rd123"
 }
 
 ###

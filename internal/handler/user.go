@@ -4,6 +4,7 @@ import (
 	"exambackend/internal/model"
 	"exambackend/pkg/jwtn"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -14,14 +15,16 @@ func (h *Handler) registerUser(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Неверные данные запроса"})
 		return
 	}
-
+	log.Println("user", user)
 	id, err := h.userService.Register(user)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Пользователь успешно зарегистрирован", "id": id})
+	c.JSON(http.StatusCreated, gin.H{
+		"id": id,
+	})
 }
 
 // loginUser обрабатывает аутентификацию пользователя и выдачу токена
