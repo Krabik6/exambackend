@@ -53,7 +53,7 @@ func (h *Handler) loginUser(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"token": token})
 }
 
-// createViolation обрабатывает создание нового заявления о нарушении
+// createViolation
 func (h *Handler) createViolation(c *gin.Context) {
 	var violation model.Violation
 	if err := c.BindJSON(&violation); err != nil {
@@ -61,7 +61,6 @@ func (h *Handler) createViolation(c *gin.Context) {
 		return
 	}
 
-	// Получение ID пользователя из контекста (предполагается, что мидлварь аутентификации уже добавлена и работает)
 	userID, _ := getUserIDFromContext(c)
 
 	violationID, err := h.violationService.CreateViolation(violation, userID)

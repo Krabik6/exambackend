@@ -24,6 +24,13 @@ CREATE TABLE IF NOT EXISTS violations (
                                           FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
+CREATE TABLE IF NOT EXISTS violation_images (
+                                                id SERIAL PRIMARY KEY,
+                                                violation_id INT NOT NULL,
+                                                image_url VARCHAR(255) NOT NULL,
+                                                FOREIGN KEY (violation_id) REFERENCES violations (id) ON DELETE CASCADE
+);
+
 
 -- Добавление пользователя-администратора с хешированным паролем
 INSERT INTO users (login, password, full_name, phone, email, role)

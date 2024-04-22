@@ -1,4 +1,4 @@
-@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzEwOTM0MzcwfQ.YT6BxJV6ehnnwmE-RYLHwofsCzSiNTm-YxlhVl9hI64
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzEzNzY1MjE5fQ.ug4jxR41Fgs6r-cFIZUBaW52VRfLLuKKmmmR2Hs3I6A
 
 POST http://localhost:8080/violations
 Authorization: Bearer {{TOKEN}}
@@ -6,8 +6,13 @@ Content-Type: application/json
 
 {
   "carNumber": "О123О333333О77",
-  "description": "Злая собака в машине"
+  "description": "Злая собака в машине",
+  "imageUrls": [
+    "https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666364979_14-mykaleidoscope-ru-p-krasivie-peizazhi-prirodi-oboi-17.jpg",
+    "https://www.desktopbackground.org/download/o/2014/07/09/790888_chrome-set-as-wallpapers-wallpapers-zone_7539x5031_h.jpg"
+  ]
 }
+
 
 ###
 
