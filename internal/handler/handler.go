@@ -34,7 +34,7 @@ func (h *Handler) RegisterRoutes(router *gin.Engine) {
 	}
 
 	// Маршруты для администратора
-	admin := router.Group("/admin").Use(middleware.AuthMiddleware(), middleware.AdminRoleMiddleware())
+	admin := router.Group("/admin").Use(middleware.AuthMiddleware())
 	{
 		admin.GET("/violations", h.getAllViolations)
 		admin.PATCH("/violations/:id", h.updateViolationStatus) // Теперь только для админа
